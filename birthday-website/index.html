@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <!-- Main Container -->
+    <div id="app">
+        <!-- Landing Screen -->
+        <section id="landing-screen" class="screen active">
+            <div class="background-effects" id="landing-bg"></div>
+            <div class="content">
+                <h1 class="landing-text">Hey <span id="her-name-intro">Nidhi</span> 💖,<br>I have something special for you...</h1>
+                <button id="enter-btn" class="cute-btn">Click to Enter 🎁</button>
+            </div>
+        </section>
+
+        <!-- Cake Screen -->
+        <section id="cake-screen" class="screen hidden">
+            <div class="background-effects" id="cake-bg"></div>
+            <div class="content">
+                <h1 class="landing-text">Time for the Cake! 🎂</h1>
+                <div class="cake-box" style="position: relative; display: inline-block;">
+                    <div class="knife" id="knife" style="position: absolute; top: -150px; left: 50%; font-size: 10rem; opacity: 0; pointer-events: none; z-index: 10;">🔪</div>
+                    <div class="cake-container" id="cake" style="position: relative;">
+                        <span class="cake-emoji left-half">🎂</span>
+                        <span class="cake-emoji right-half">🎂</span>
+                    </div>
+                </div>
+                <button id="cut-cake-btn" class="cute-btn" style="margin-top: 2rem;">Cut the Cake 🔪</button>
+            </div>
+        </section>
+
+        <!-- Birthday Wish Section -->
+        <section id="wish-screen" class="screen hidden">
+            <div class="background-effects" id="wish-bg"></div>
+            <div class="content">
+                <h1 id="typed-wish" class="wish-text"></h1>
+                <p class="subtext">You are one of the most amazing people I know…</p>
+                <button id="next-to-gallery-btn" class="cute-btn next-btn" style="display: none; margin: 2rem auto 0 auto;">See Memories 📸</button>
+                <div class="balloons-container" id="balloons"></div>
+            </div>
+        </section>
+        
+        <!-- Photo Gallery Section -->
+        <section id="gallery-screen" class="screen hidden">
+            <div class="background-effects" id="gallery-bg"></div>
+            <h2 class="gallery-title">A Few Beautiful Memories ✨</h2>
+            <div class="gallery-container">
+                <div class="polaroid">
+                    <img class="polaroid-img" src="assets/images/p1.jpeg" alt="Memory 1">
+                    <p class="polaroid-caption">Always Smiling 😊</p>
+                </div>
+                <div class="polaroid">
+                    <img class="polaroid-img" src="assets/images/p2.jpeg" alt="Memory 2">
+                    <p class="polaroid-caption">Good Times ✨</p>
+                </div>
+                <div class="polaroid">
+                    <img class="polaroid-img" src="assets/images/p3.jpeg" alt="Memory 3">
+                    <p class="polaroid-caption">Pure Joy 💖</p>
+                </div>
+                <div class="polaroid">
+                    <img class="polaroid-img" src="assets/images/p4.jpeg" alt="Memory 4">
+                    <p class="polaroid-caption">Beautiful Soul 🌸</p>
+                </div>
+                <div class="polaroid">
+                    <img class="polaroid-img" src="assets/images/p5.jpeg" alt="Memory 5">
+                    <p class="polaroid-caption">Cherished 💝</p>
+                </div>
+                <div class="polaroid">
+                    <img class="polaroid-img" src="assets/images/p6.jpeg" alt="Memory 6">
+                    <p class="polaroid-caption">Forever Friends 🎀</p>
+                </div>
+                <div class="polaroid">
+                    <img class="polaroid-img" src="assets/images/p7.jpeg" alt="Memory 7">
+                    <p class="polaroid-caption">Forever 🌟</p>
+                </div>
+            </div>
+            <button id="next-to-msg-btn" class="cute-btn next-btn">Next 💌</button>
+        </section>
+
+        <!-- Message Section -->
+        <section id="message-screen" class="screen hidden">
+            <div class="background-effects" id="message-bg"></div>
+            <div class="content message-content">
+                <p id="personal-message">
+                    From all the memories to all the laughs…<br>
+                    You make everything brighter ✨<br>
+                    Stay happy, stay amazing 💖
+                </p>
+                <button id="surprise-btn" class="cute-btn" style="margin-top: 2rem;">Click for a Surprise 🎁</button>
+            </div>
+        </section>
+
+        <!-- Final Screen -->
+        <section id="final-screen" class="screen hidden">
+            <div class="background-effects" id="final-bg"></div>
+            <div class="content">
+                <h1 class="landing-text">Once Again…<br>Happy Birthday 🎂💖</h1>
+                <p class="subtext">You deserve all the happiness in the world.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Audio Toggle & Audio Element -->
+    <button id="audio-toggle" class="audio-toggle">🎵 Play Music</button>
+    <audio id="bg-music" loop>
+        <source src="assets/music/birthday-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
