@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const surpriseBtn = document.getElementById('surprise-btn');
     
     const audioToggle = document.getElementById('audio-toggle');
-    // Note: Make sure to add birthday-music.mp3 to assets/music/
+    // Note: Audio file updated to "Tainu Khabar Nahi"
     const bgMusic = document.getElementById('bg-music');
     let isPlaying = false;
     
